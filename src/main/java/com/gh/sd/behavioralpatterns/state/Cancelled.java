@@ -5,4 +5,9 @@ public class Cancelled implements OrderState {
     public double handleCancellation() {
         throw new IllegalStateException("Cancelled order. Cannot cancel anymore");
     }
+
+    @Override
+    public OrderState next() {
+        return new New();
+    }
 }
