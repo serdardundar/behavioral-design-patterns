@@ -6,4 +6,9 @@ public class New implements OrderState{
         System.out.println("It's a new order. No processing done.");
         return 0;
     }
+
+    @Override
+    public OrderState next() {
+        return new Paid();
+    }
 }

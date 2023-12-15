@@ -7,4 +7,9 @@ public class Delivered implements OrderState {
         System.out.println("Payment roll back will be initiated upon receiving returned item");
         return 30;
     }
+
+    @Override
+    public OrderState next() {
+        return new New();
+    }
 }

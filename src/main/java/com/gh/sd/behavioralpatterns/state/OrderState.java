@@ -4,4 +4,6 @@ package com.gh.sd.behavioralpatterns.state;
 public interface OrderState {
 
     double handleCancellation();
+
+    OrderState next();
 }

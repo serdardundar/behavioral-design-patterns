@@ -7,4 +7,9 @@ public class InTransit implements OrderState {
         System.out.println("Contacting payment service for transaction roll back");
         return 20;
     }
+
+    @Override
+    public OrderState next() {
+        return new Delivered();
+    }
 }

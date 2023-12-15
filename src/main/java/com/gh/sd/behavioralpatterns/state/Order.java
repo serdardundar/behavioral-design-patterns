@@ -3,26 +3,27 @@ package com.gh.sd.behavioralpatterns.state;
 // Context class
 public class Order {
 
-    private OrderState currentState;
+    private OrderState state = new New();
 
-    public Order() {
-        currentState = new New();
+    protected void processed() {
+        state = state.next();
     }
+
     public double cancel() {
-        double charges = currentState.handleCancellation();
-        currentState = new Cancelled();
+        double charges = state.handleCancellation();
+        state = new Cancelled();
         return charges;
     }
 
     public void paymentSuccessful() {
-        currentState = new Paid();
+        processed();
     }
 
     public void dispatched() {
-        currentState = new InTransit();
+        processed();
     }
 
     public void delivered() {
-        currentState = new Delivered();
+        processed();
     }
 }
