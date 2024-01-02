@@ -8,6 +8,13 @@ public class PrintService {
 
     private final OrderPrinter printer;
 
+    /**
+     * Default constructor with a {@link OrderPrinter}
+     */
+    public PrintService() {
+        this.printer = new DetailPrinter();
+    }
+
     public PrintService(OrderPrinter printer) {
         this.printer = printer;
     }

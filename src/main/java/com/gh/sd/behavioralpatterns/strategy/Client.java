@@ -9,11 +9,14 @@ public class Client {
     public static void main(String[] args) {
         createOrders();
         //print all orders
-        PrintService detailPrinter = new PrintService(new DetailPrinter());
-        detailPrinter.printOrders(orders);
+        PrintService defaultPrintService = new PrintService();
+        defaultPrintService.printOrders(orders);
 
         PrintService summaryPrinter = new PrintService(new SummaryPrinter());
         summaryPrinter.printOrders(orders);
+
+        PrintService detailPrinter = new PrintService(new DetailPrinter());
+        detailPrinter.printOrders(orders);
     }
 
     private static void createOrders() {
