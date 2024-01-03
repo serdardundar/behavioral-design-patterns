@@ -5,8 +5,11 @@ public class Client {
     public static void main(String[] args) {
         Order order = new Order("100");
 
-        order.attach(new PriceObserver());
-        order.attach(new QuantityObserver());
+        QuantityObserver quantityObserver = new QuantityObserver();
+        PriceObserver priceObserver = new PriceObserver();
+
+        order.attach(quantityObserver);
+        order.attach(priceObserver);
 
         order.addItem(100);
         System.out.println(order);
@@ -28,5 +31,14 @@ public class Client {
         System.out.println("********************************");
         order.addItem(130);
         System.out.println(order);
+
+        order.detach(quantityObserver);
+
+        System.out.println("********************************");
+
+        //Shipping cost will not change anymore
+        order.addItem(50);
+        System.out.println(order);
+        System.out.println("********************************");
     }
 }
